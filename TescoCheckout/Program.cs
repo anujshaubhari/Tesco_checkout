@@ -15,18 +15,18 @@ namespace TescoCheckout
             Console.WriteLine();
             while (true)
             {
-                var productId = Console.ReadLine();
-                if (productId.ToLower() == "end")
+                var productId = Console.ReadLine()?.ToUpper();
+                if (productId == "END")
                 {
                     Console.WriteLine();
                     Console.WriteLine("Added Product details");
                     foreach (var checkout in checkoutList)
                     {
-                        Console.WriteLine($"Product {checkout.Product.Name}, Description {checkout.Product.Description}, Quantity {checkout.Quantity}, Final Price {checkout.FinalPrice}");
+                        Console.WriteLine($"Product {checkout.Product.Name}, Description {checkout.Product.Description}, Quantity {checkout.Quantity}, Final Price \u00A3{checkout.FinalPrice}");
                     }
                     Console.WriteLine();
                     Console.WriteLine("---------------------------------------------------");
-                    Console.WriteLine($"Total items : {checkoutList.Sum(x => x.Quantity)} , Total Amount : {checkoutList.Sum(x => x.FinalPrice)}");
+                    Console.WriteLine($"Total items : {checkoutList.Sum(x => x.Quantity)} , Total Amount : \u00A3{checkoutList.Sum(x => x.FinalPrice)}");
                     Console.WriteLine("---------------------------------------------------");
                     Console.WriteLine();
                     break;
@@ -60,7 +60,7 @@ namespace TescoCheckout
                         item.FinalPrice += item.Product.Price;
                     }
                 }
-                Console.WriteLine($"Product added {product.Name}, Description {product.Description}, Price {product.Price}");
+                Console.WriteLine($"Product added {product.Name}, Description {product.Description}, Price \u00A3{product.Price}");
                 Console.WriteLine();
             }
         }
